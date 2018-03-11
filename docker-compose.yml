@@ -1,10 +1,11 @@
-version: '3.2'
+version: '3.5'
 
 services:
-   db:
-     image: mysql:5.7
+   wpdb:
+     container_name: wpdb
+     image: mysql:latest
      volumes:
-       - db:/var/lib/mysql
+       - wpdb:/var/lib/mysql
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: secret
@@ -13,14 +14,15 @@ services:
        MYSQL_PASSWORD: password
 
    wp:
+     container_name: wp
      depends_on:
-       - db
+       - wpdb
      image: wordpress:latest
      ports:
-       - "8000:80"
+       - "80:80"
      restart: always
      environment:
-       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_HOST: wpdb:3306
        WORDPRESS_DB_NAME: wpdb
        WORDPRESS_DB_USER: wpadmin
        WORDPRESS_DB_PASSWORD: password
@@ -29,4 +31,4 @@ services:
        - ./wp-content:/var/www/html/wp-content
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 volumes:
-    db:
+    wpdb:
