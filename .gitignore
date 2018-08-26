@@ -1,5 +1,14 @@
-.idea
-wp-content/*
-wordpress/*
+# idea/editor
+/.idea/
+/.vscode/
+
+# wp-content
+/wordpress/
+/wp-content/
+/wp-content-ms/
+
+# private
+msdbbak.sql
+wp-content.tar.gz
 
 !/**/.gitkeep

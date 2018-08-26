@@ -9,7 +9,7 @@ services:
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: secret
-       MYSQL_DATABASE: wpdb
+       MYSQL_DATABASE: msdb
        MYSQL_USER: wpadmin
        MYSQL_PASSWORD: password
 
@@ -23,12 +23,12 @@ services:
      restart: always
      environment:
        WORDPRESS_DB_HOST: wpdb:3306
-       WORDPRESS_DB_NAME: wpdb
+       WORDPRESS_DB_NAME: msdb
        WORDPRESS_DB_USER: wpadmin
        WORDPRESS_DB_PASSWORD: password
      working_dir: /var/www/html
      volumes:
-       - ./wp-content:/var/www/html/wp-content
+       - ./wp-content-ms:/var/www/html/wp-content
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 volumes:
     wpdb:
