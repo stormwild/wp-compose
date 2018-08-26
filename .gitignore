@@ -1,5 +1,13 @@
-.idea
-wp-content/*
-wordpress/*
+# idea/editor
+/.idea/
+/.vscode/
+
+# wp-content
+/wordpress/
+/wp-content/
+/wp-content-ms/
+
+# private
+/local/
 
 !/**/.gitkeep

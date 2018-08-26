@@ -1,8 +1,9 @@
-# Local WordPress Development Using Docker
+# WordPress Development Using Docker
 
 ## Pre-requisites
 
 - Docker
+- Git
 
 ## Usage
 
@@ -20,7 +21,7 @@ volumes:
 
 Start services
 
-```
+```sh
 cd wp
 docker-compose up -d
 ```
@@ -41,6 +42,42 @@ In PHPStorm it may be possible to use include path to include a path to your loc
 
 Visual Studio Code allows for multi-root workspaces. You can add your local wordpress folder in the same workspace as your theme folder.
 
+## MySQL
 
+Update Site Url in the database:
 
+```sql
+UPDATE wp_options SET option_value = 'http://example.local' WHERE option_name = 'siteurl';
+```
 
+## Bash
+
+Access bash in the running container
+
+```sh
+docker exec -it wpdb bash
+```
+
+## Notes
+
+- Import a different database into container
+- Switch between databases by changing the database reference
+- Restart containers
+
+## WordPress Admin
+
+admin:pass
+
+Extract a tar.gz file
+
+```sh
+tar -zxvf yourfile.tar.gz
+```
+
+Extracts the file to the current directory.
+
+You can specify a different directory to extract to using -C parameter and a path to the directory as follows:
+
+```sh
+tar -C /folder -zxvf yourfile.tar.gz
+```
