@@ -44,7 +44,21 @@ Visual Studio Code allows for multi-root workspaces. You can add your local word
 
 ## MySQL
 
-Update Site Url in the database:
+### Create Database
+
+```sql
+CREATE SCHEMA `newdb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
+
+GRANT ALL PRIVILEGES ON msdb.* TO 'wpadmin'@'%' WITH GRANT OPTION;
+```
+
+### Import a Database
+
+```sh
+cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root newdb
+```
+
+### Update Site Url in the database:
 
 ```sql
 UPDATE wp_options SET option_value = 'http://example.local' WHERE option_name = 'siteurl';
