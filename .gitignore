@@ -8,7 +8,6 @@
 /wp-content-ms/
 
 # private
-msdbbak.sql
-wp-content.tar.gz
+/local/
 
 !/**/.gitkeep

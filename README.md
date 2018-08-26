@@ -21,7 +21,7 @@ volumes:
 
 Start services
 
-```
+```sh
 cd wp
 docker-compose up -d
 ```
