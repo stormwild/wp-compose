@@ -1,29 +1,29 @@
 version: '3.5'
 
 services:
-   wpdb:
-     container_name: wpdb
+   playphdb:
+     container_name: playphdb
      image: mysql:latest
      volumes:
-       - wpdb:/var/lib/mysql
+       - playphdb:/var/lib/mysql
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: secret
-       MYSQL_DATABASE: wpdb
+       MYSQL_DATABASE: playphdb
        MYSQL_USER: wpadmin
        MYSQL_PASSWORD: password
 
-   wp:
-     container_name: wp
+   playphwp:
+     container_name: playphwp
      depends_on:
-       - wpdb
+       - playphdb
      image: wordpress:latest
      ports:
        - "80:80"
      restart: always
      environment:
-       WORDPRESS_DB_HOST: wpdb:3306
-       WORDPRESS_DB_NAME: wpdb
+       WORDPRESS_DB_HOST: playphdb:3306
+       WORDPRESS_DB_NAME: playphdb
        WORDPRESS_DB_USER: wpadmin
        WORDPRESS_DB_PASSWORD: password
      working_dir: /var/www/html
@@ -31,4 +31,4 @@ services:
        - ./wp-content:/var/www/html/wp-content
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 volumes:
-    wpdb:
+    playphdb:
