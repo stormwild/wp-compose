@@ -41,6 +41,9 @@ In PHPStorm it may be possible to use include path to include a path to your loc
 
 Visual Studio Code allows for multi-root workspaces. You can add your local wordpress folder in the same workspace as your theme folder.
 
+## Notes
+
+It seems the wp-content volume needs to be empty prior to starting the container the first time, or else it will be unable to write to the directory.
 
 
 
