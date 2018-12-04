@@ -1,5 +1,12 @@
 # WordPress Development Using Docker
 
+## Changelog
+
+Changes mysql:latest to mysql:5.7 due to changes in [MySQL 8 password authentication](https://github.com/docker-library/wordpress/issues/313)
+
+> MySQL 8 changed the password authentication method. You're looking for the mysql_native_password plugin 
+
+
 ## Pre-requisites
 
 - Docker
