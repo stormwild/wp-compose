@@ -41,6 +41,42 @@ In PHPStorm it may be possible to use include path to include a path to your loc
 
 Visual Studio Code allows for multi-root workspaces. You can add your local wordpress folder in the same workspace as your theme folder.
 
+## MySQL 8
 
+Check running containers
 
+```
+docker ps
+```
 
+Output
+
+```sh
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                 NAMES
+03feb7391f85        wordpress:latest    "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        0.0.0.0:80->80/tcp    wp
+daba7a75e9ee        mysql:latest        "docker-entrypoint.s…"   7 minutes ago       Up 7 minutes        3306/tcp, 33060/tcp   wpdb
+```
+
+Just use 5.7
+
+[WordPress can’t connect to the latest MySQL 8.x Server?](https://medium.com/@hkdb/wordpress-cant-connect-to-the-latest-mysql-8-x-server-33c4c43b05b7)
+
+## Cleanup
+
+```sh
+docker-compose down
+```
+
+Verify
+
+```sh
+docker ps -a
+```
+
+Remove volumes
+
+```sh
+docker volume ls
+docker volume remove daba7a75e9ee
+```
