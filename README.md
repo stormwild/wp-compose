@@ -78,5 +78,15 @@ Remove volumes
 
 ```sh
 docker volume ls
-docker volume remove daba7a75e9ee
+docker volume rm daba7a75e9ee
+```
+
+## Access MySQL
+
+```sh
+docker exec -it wpdb bash
+```
+
+```sh
+mysql -uwpadmin -ppassword
 ```
