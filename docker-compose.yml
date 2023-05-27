@@ -1,35 +1,21 @@
-version: '3.5'
+version: '3.9'
 
 services:
-   wpdb:
-     container_name: wpdb
-     image: mysql:5.7
-     volumes:
-       - wpdb:/var/lib/mysql
-       - ./db:/root/db
-     restart: always
-     environment:
+  nginx:
+    image: nginx:mainline-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./wordpress:/var/www/html
+  mysql: 
+    image: mysql:latest
+    environment:
+       MYSQL_DATABASE: wp
+       MYSQL_USER: wp
+       MYSQL_PASSWORD: secret
        MYSQL_ROOT_PASSWORD: secret
-       MYSQL_DATABASE: wpdb
-       MYSQL_USER: wpadmin
-       MYSQL_PASSWORD: password
-
-   wp:
-     container_name: wp
-     depends_on:
-       - wpdb
-     image: wordpress:latest
-     ports:
-       - "80:80"
-     restart: always
-     environment:
-       WORDPRESS_DB_HOST: wpdb:3306
-       WORDPRESS_DB_NAME: wpdb
-       WORDPRESS_DB_USER: wpadmin
-       WORDPRESS_DB_PASSWORD: password
-     working_dir: /var/www/html
-     volumes:
-       - ./wp-content:/var/www/html/wp-content
-       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-volumes:
-    wpdb:
+  php:
+    image: php:8.1-fpm-alpine
+    volumes:
+      - ./wordpress:/var/www/html
