@@ -4,3 +4,7 @@ wordpress/*
 db/*
 
 !/**/.gitkeep
+
+.env
+
+!.env.sample
