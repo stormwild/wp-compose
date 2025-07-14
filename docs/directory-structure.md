@@ -1,3 +1,6 @@
+# Directory Structure Documentation
+
+```sh
 wp-content
 ├── index.php
 ├── plugins
@@ -60,3 +63,4 @@ wp-content
     └── uag-plugin
 
 55 directories, 4 files
+```
