@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PHP 8.4 FPM Alpine support for latest PHP features and security updates
 - Enhanced documentation structure in `docs/` folder
 - Directory structure documentation (`docs/directory-structure.md`)
+- Nginx configuration tutorial (`docs/nginx-tutorial.md`) explaining the config and CSP guidance
 
 ### Changed
 
@@ -22,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Organized MySQL configuration files in `my.cnf/` directory structure
 - Reorganized documentation files into `docs/` folder
 - Updated `.env` file with new version specifications
+- Pinned WordPress image to `6.8.2-php8.4-fpm-alpine` and set the same as the default Compose fallback
+- Enforced kebab-case naming for documentation files; renamed `CHANGELOG.md` to `changelog.md`
 
 ### Fixed
 
@@ -60,7 +63,7 @@ If upgrading from previous versions:
 
    ```
    MYSQL_VERSION=8.4.4
-   WORDPRESS_VERSION=php8.4-fpm-alpine
+   WORDPRESS_VERSION=6.8.2-php8.4-fpm-alpine
    ```
 
 3. Configuration files are organized in the `my.cnf/` directory
